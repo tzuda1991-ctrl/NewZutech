@@ -218,3 +218,29 @@
 .pricing-note > strong { color: #253126; font-size: 13px; }
 .pricing-note > p { margin: 9px 0 16px; color: #616b5c; font-size: 11px; line-height: 1.8; }
 @media(max-width:700px) { .pricing-section { padding: 15px 6% 65px; }.pricing-grid { grid-template-columns: 1fr; }.pricing-card { min-height: 235px; padding: 22px; }.pricing-note { padding: 19px; } }
+
+/* Keep business identity and support channels legible on compact screens. */
+.site-footer { color: #f4f4ea; }
+.brand-light .brand-mark { background: #d8fb7a; color: #172019; box-shadow: none; }
+.brand-light .brand-name > span { color: #d8fb7a; }
+.footer-business { display: grid; grid-template-columns: minmax(180px,.8fr) minmax(260px,1.2fr); gap: 18px 42px; padding: 24px 0; border-top: 1px solid #ffffff24; }
+.footer-legal { margin: 0; color: #d6dbd1; font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+.footer-legal b { display: block; margin-bottom: 3px; color: #f7f6ed; font-size: 14px; }
+.footer-support { display: flex; flex-wrap: wrap; align-content: start; align-items: center; gap: 8px 16px; min-width: 0; color: #b8c2b5; font-size: 12px; line-height: 1.7; }
+.footer-support a { color: #e3e9dc; overflow-wrap: anywhere; }
+.footer-support a:hover,.footer-links a:hover { color: #d8fb7a; }
+.support-sep { color: #82907e; }
+.footer-bottom { align-items: flex-start; flex-wrap: wrap; }
+.footer-links { flex-wrap: wrap; row-gap: 10px; }
+@media(max-width:680px) {
+  .footer-top { align-items: flex-start; gap: 15px 10px; padding-bottom: 20px; }
+  .footer-top > .brand { flex: 0 0 auto; }
+  .footer-top > p { margin-left: auto; text-align: right; font-size: 10px; }
+  .footer-contact { width: 100%; padding-top: 13px; border-top: 1px solid #ffffff24; }
+  .footer-business { grid-template-columns: 1fr; gap: 13px; padding: 18px 0; }
+  .footer-legal { font-size: 11px; }
+  .footer-support { display: grid; grid-template-columns: minmax(0,1fr); justify-items: start; gap: 5px; font-size: 11px; }
+  .support-sep { display: none; }
+  .footer-bottom { gap: 12px; padding-top: 14px; }
+  .footer-links { display: flex; gap: 8px 15px; }
+}
