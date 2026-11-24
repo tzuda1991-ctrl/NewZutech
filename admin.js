@@ -94,7 +94,7 @@ module.exports = function createAdminRouter({ express, db }) {
 
   router.get('/admin', async (req, res, next) => {
     try {
-      const [[inq], [service], [work], [invoice], recent, settings] = await Promise.all([
+      const [inquiriesResult, servicesResult, portfolioResult, invoicesResult, recent, settings] = await Promise.all([
         db.query("SELECT count(*)::int AS total, count(*) FILTER (WHERE status='new')::int AS new FROM enquiries"),
         db.query("SELECT count(*)::int AS total,count(*) FILTER(WHERE trim(price_label)='')::int AS missing_price FROM services WHERE active=true"),
         db.query('SELECT count(*)::int AS total FROM portfolio WHERE published=true'),
@@ -102,6 +102,10 @@ module.exports = function createAdminRouter({ express, db }) {
         db.query('SELECT id,name,email,phone,project_type,status,created_at FROM enquiries ORDER BY created_at DESC LIMIT 6'),
         db.query('SELECT key,value FROM site_settings'),
       ]);
+      const inq = inquiriesResult.rows[0];
+      const service = servicesResult.rows[0];
+      const work = portfolioResult.rows[0];
+      const invoice = invoicesResult.rows[0];
       const values = Object.fromEntries(settings.rows.map(row => [row.key, row.value]));
       const checklist = [
         ['Registered business name', values.legal_name], ['Business address', values.business_address], ['Support email', values.support_email], ['Support phone', values.support_phone], ['Customer support hours', values.support_hours], ['Refund processing timeline', values.refund_timeline],
